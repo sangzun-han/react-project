@@ -2,32 +2,57 @@ import { useContext, useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
 import * as ROUTES from '../constants/routes';
+import { doesUsernameExist } from '../services/firebase';
 
-export default function Login() {
+export default function SignUp() {
   const history = useHistory();
   const { firebase } = useContext(FirebaseContext);
 
+  const [username, setUsername] = useState('');
+  const [fullName, setFullName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
 
   const [error, setError] = useState('');
   const isInvalid = password === '' || emailAddress === '';
 
-  const handleLogin = async (event) => {
+  const handleSingUp = async (event) => {
     event.preventDefault();
 
-    try {
-      await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
-      history.push(ROUTES.DASHBOARD);
-    } catch (error) {
-      setEmailAddress('');
-      setPassword('');
-      setError(error.message);
+    const usernameExists = await doesUsernameExist(username);
+    if (usernameExists.length?.[0] === false) {
+      try {
+        const createdUserResult = await firebase
+          .auth()
+          .createUserWithEmailPassword(emailAddress, password);
+
+        await createdUserResult.user.updateProfile({
+          displayName: username,
+        });
+
+        await firebase.firestore().collection('users').add({
+          userId: createdUserResult.user.uid,
+          username: username.toLowerCase(),
+          fullName,
+          emailAddress: emailAddress.toLowerCase(),
+          following: [],
+          dateCreated: Date.now(),
+        });
+
+        history.push(ROUTES.DASHBOARD);
+      } catch (error) {
+        setFullName('');
+        setEmailAddress('');
+        setPassword('');
+        setError(error.message);
+      }
+    } else {
+      setError('이미 존재하는 아이디입니다.');
     }
   };
 
   useEffect(() => {
-    document.title = 'Login - Instagram';
+    document.title = 'Sign Up - Instagram';
   }, []);
 
   return (
@@ -49,14 +74,30 @@ export default function Login() {
           </h1>
           {error && <p className='mb-4 text-xs text-red-primary'>{error}</p>}
 
-          <form onSubmit={handleLogin} method='POST'>
+          <form onSubmit={handleSingUp} method='POST'>
+            <input
+              area-label='Enter your username'
+              type='text'
+              placeholder='Username'
+              className='text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2'
+              onChange={({ target }) => setUsername(target.value)}
+              value={username}
+            />
+            <input
+              area-label='Enter your full name'
+              type='text'
+              placeholder='Full Name'
+              className='text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2'
+              onChange={({ target }) => setFullName(target.value)}
+              value={emailAddress}
+            />
             <input
               area-label='Enter your email address'
               type='text'
-              placeholder='Email'
+              placeholder='Email address'
               className='text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2'
               onChange={({ target }) => setEmailAddress(target.value)}
-              value={emailAddress}
+              value={password}
             />
             <input
               area-label='Enter your password'
@@ -64,9 +105,7 @@ export default function Login() {
               placeholder='Password'
               className='text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2'
               onChange={({ target }) => setPassword(target.value)}
-              value={password}
             />
-
             <button
               disabled={isInvalid}
               type='submit'
@@ -80,9 +119,9 @@ export default function Login() {
         </div>
         <div className='flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary'>
           <p className='text-sm'>
-            계정이 없으신가요?
-            <Link to='/signup' className='font-bold text-blue-medium'>
-              가입하기
+            계정이 있으신가요?
+            <Link to={ROUTES.LOGIN} className='font-bold text-blue-medium'>
+              로그인
             </Link>
           </p>
         </div>

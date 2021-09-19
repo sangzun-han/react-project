@@ -20,7 +20,7 @@ export default function SignUp() {
     event.preventDefault();
 
     const usernameExists = await doesUsernameExist(username);
-    if (usernameExists.length?.[0] === false) {
+    if (!usernameExists) {
       try {
         const createdUserResult = await firebase
           .auth()
@@ -89,7 +89,7 @@ export default function SignUp() {
               placeholder='Full Name'
               className='text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2'
               onChange={({ target }) => setFullName(target.value)}
-              value={emailAddress}
+              value={fullName}
             />
             <input
               area-label='Enter your email address'
@@ -97,7 +97,7 @@ export default function SignUp() {
               placeholder='Email address'
               className='text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2'
               onChange={({ target }) => setEmailAddress(target.value)}
-              value={password}
+              value={emailAddress}
             />
             <input
               area-label='Enter your password'
@@ -105,6 +105,7 @@ export default function SignUp() {
               placeholder='Password'
               className='text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2'
               onChange={({ target }) => setPassword(target.value)}
+              value={password}
             />
             <button
               disabled={isInvalid}

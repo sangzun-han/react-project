@@ -8,3 +8,5 @@ npm install date-fns
 npm install firebase
 npm install react-loading-skeleton
 ```
+
+React(Custom Hooks, Context), Firebase, Tailwind CSS

@@ -30,7 +30,7 @@ body {
 }
 
 /*-------------------------------*/
-/* 레이아웃 */
+/* sidebar */
 /*-------------------------------*/
 
 .main {
@@ -94,4 +94,73 @@ body {
 
 .user {
   width: 200px;
+}
+
+/*-------------------------------*/
+/* section */
+/*-------------------------------*/
+
+.section {
+  position: relative;
+  top: 10%;
+}
+
+.title {
+  margin-bottom: 30px;
+}
+
+.title h1 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #113377;
+}
+
+.recent {
+  color: #98afba;
+  font-size: 16px;
+}
+
+.menu {
+  width: 590px;
+  display: flex;
+  justify-content: space-between;
+  border-right: 0;
+  border-left: 0;
+  line-height: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.right {
+  width: 300px;
+  border-top: 3px dotted #909090;
+  border-bottom: 3px dotted #909090;
+  display: flex;
+  flex-direction: column;
+}
+
+.right span {
+  font-size: 16px;
+  line-height: 25px;
+}
+
+table {
+  width: 250px;
+  border: 1px solid #444;
+}
+
+td {
+  border: 1px solid #444;
+  background-color: #f7f7f7;
+  text-align: center;
+  vertical-align: middle;
+}
+.miniroom {
+  width: 590px;
+  height: 250px;
+  overflow: hidden;
+}
+
+.miniroom img {
+  width: 100%;
 }

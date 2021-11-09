@@ -1,0 +1,42 @@
+* {
+  font-family: 돋움;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 1000px;
+  height: 680px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 돋움;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  width: 1000px;
+  height: 680px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: 335px 650px 20px;
+}
+
+.mgauto {
+  margin: 0 auto;
+}
+.font {
+  font-family: tahoma;
+}
+
+.red {
+  color: #ff0000;
+}

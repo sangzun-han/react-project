@@ -1,44 +1,56 @@
 import React, { Component } from "react";
 
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+
 class Habit extends Component {
-  handleIncrement = (habit) => {
+  componentDidMount() {
+    console.log(`habit: ${this.props.habit.name} mountend`);
+  }
+
+  componentWillUnmount() {
+    console.log(`habit: ${this.props.habit.name} unmountend`);
+  }
+
+  handleIncrement = () => {
     this.props.onIncrement(this.props.habit);
   };
 
-  handleDecrement = (habit) => {
+  handleDecrement = () => {
     this.props.onDecrement(this.props.habit);
   };
 
-  handleDelete = (habit) => {
+  handleDelete = () => {
     this.props.onDelete(this.props.habit);
   };
 
   render() {
     const { name, count } = this.props.habit;
-    return (
-      <li className="habit">
-        <span className="habit-name">{name}</span>
-        <span className="habit-count">{count}</span>
-        <button
-          className="habit-button habit-increase"
-          onClick={this.handleIncrement}
-        >
-          <i className="fas fa-plus"></i>
-        </button>
-        <button
-          className="habit-button habit-decrease"
-          onClick={this.handleDecrement}
-        >
-          <i className="fas fa-minus"></i>
-        </button>
 
-        <button
-          className="habit-button habit-delete"
-          onClick={this.handleDelete}
-        >
-          <i className="fas fa-trash"></i>
-        </button>
-      </li>
+    return (
+      <Card className="me-5 mb-5 flex-wrap" style={{ width: "18rem" }}>
+        <Card.Body>
+          <Card.Title>{name}</Card.Title>
+          <Card.Text>{count}</Card.Text>
+          <Button
+            variant="primary"
+            className="me-2"
+            onClick={this.handleIncrement}
+          >
+            <i className="fas fa-plus"></i>
+          </Button>
+          <Button
+            variant="primary"
+            className="me-2"
+            onClick={this.handleDecrement}
+          >
+            <i className="fas fa-minus"></i>
+          </Button>
+          <Button variant="primary" onClick={this.handleDelete}>
+            <i className="fas fa-trash"></i>
+          </Button>
+        </Card.Body>
+      </Card>
     );
   }
 }

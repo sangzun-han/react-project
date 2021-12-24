@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+  background: #212121;
+}
+
+ul,
+li {
+  list-style: none;
+}

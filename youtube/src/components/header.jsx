@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../styles/header.module.css";
-import { faBell, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faUser, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Header = () => {
   return (
@@ -16,6 +16,7 @@ const Header = () => {
           </button>
         </li>
         <li className={styles.icon}>
+          <FontAwesomeIcon icon={faSearch} size="2x" />
           <FontAwesomeIcon icon={faBell} size="2x" />
           <FontAwesomeIcon icon={faUser} size="2x" />
         </li>

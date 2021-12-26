@@ -34,7 +34,7 @@ input:focus {
 }
 
 .searchButton {
-  width: 64px;
+  min-width: 56px;
   height: 40px;
   position: relative;
   padding: 0.3rem 0.5rem;
@@ -55,17 +55,20 @@ input:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 75px;
+  width: 150px;
 }
 
 @media screen and (max-width: 768px) {
-  .icon {
-    display: none;
-  }
   .navbar {
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
   .searchInput {
-    width: 60%;
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .input {
+    display: none;
   }
 }

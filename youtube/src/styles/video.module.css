@@ -1,0 +1,26 @@
+.section {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-top: 2.5rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.thumbnail {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.thumbnailTitle {
+  width: 250px;
+  color: white;
+  font-size: 18px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

@@ -15,6 +15,9 @@
   justify-content: center;
   margin: 1rem;
 }
+.thumbnailImg {
+  margin-bottom: 0.4rem;
+}
 
 .thumbnailTitle {
   width: 250px;
@@ -23,4 +26,32 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-bottom: 1rem;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.profileImg {
+  margin-right: 0.5rem;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.font {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+.infoFont {
+  color: #aaaaaa;
+  font-size: 12px;
 }

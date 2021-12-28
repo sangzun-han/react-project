@@ -1,12 +1,18 @@
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Header from "./components/header";
+
 import Video from "./components/video";
+import VideoDetail from "./components/videoDetail";
 
 function App() {
   return (
     <>
-      <Header />
-      <Video />
+      <BrowserRouter>
+        <Switch>
+          <Route path="/video-detail/:id" component={VideoDetail} />
+          <Route path="/" component={Video} />
+        </Switch>
+      </BrowserRouter>
     </>
   );
 }

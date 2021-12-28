@@ -7,12 +7,16 @@ const Header = () => {
     <header className={styles.header}>
       <ul className={styles.navbar}>
         <li>
-          <img src="images/logo.png" alt="logo" />
+          <img src={process.env.PUBLIC_URL + "/images/logo.png"} alt="logo" />
         </li>
         <li className={styles.searchInput}>
           <input type="text" placeholder="검색" className={styles.input} />
           <button type="submit" className={styles.searchButton}>
-            <img src="images/search.png" alt="search" className={styles.logo} />
+            <img
+              src={process.env.PUBLIC_URL + "/images/search.png"}
+              alt="search"
+              className={styles.logo}
+            />
           </button>
         </li>
         <li className={styles.icon}>

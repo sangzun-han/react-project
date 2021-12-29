@@ -1,9 +1,11 @@
 import React from "react";
 import Header from "./header";
 import styles from "../styles/videoDetail.module.css";
+import { Link } from "react-router-dom";
 
 const VideoDetail = (props) => {
-  console.log(props.location.state.allVideo);
+  const { video, title, description, allVideo } = props.location.state;
+  console.log(props.location.state);
   return (
     <div>
       <Header />
@@ -13,30 +15,44 @@ const VideoDetail = (props) => {
             <iframe
               id="ytplayer"
               type="text/html"
-              src={`https://www.youtube.com/embed/${props.location.state.video}`}
+              src={`https://www.youtube.com/embed/${video.id}`}
               frameBorder="0"
               allowFullScreen
               className={styles.iframe}
             />
           </div>
 
-          <h3 className={styles.title}>{props.location.state.title}</h3>
-          <p className={styles.desc}>{props.location.state.description}</p>
+          <h3 className={styles.title}>{title}</h3>
+          <p className={styles.desc}>{description}</p>
         </article>
         <article className={styles.subVideo}>
-          {props.location.state.allVideo.map((video) => {
+          {allVideo.map((video) => {
             return (
               <div className={styles.subVideoInfo}>
                 <div className={styles.imgTitle}>
-                  <img
-                    key={`image-${video.id}`}
-                    src={video.snippet.thumbnails.medium.url}
-                    alt="thumbnail"
-                    className={styles.thumbnailImg}
-                    width={168}
-                    height={94}
-                  />
-                  <p className={styles.subTitle}>{video.snippet.title}</p>
+                  <Link
+                    key={`link-${video.id}`}
+                    to={{
+                      pathname: `/video-detail/${video.id}`,
+                      state: {
+                        video: video,
+                        title: title,
+                        description: description,
+                        allVideo: allVideo,
+                      },
+                    }}
+                    className={styles.Link}
+                  >
+                    <img
+                      key={`image-${video.id}`}
+                      src={video.snippet.thumbnails.medium.url}
+                      alt="thumbnail"
+                      className={styles.thumbnailImg}
+                      width={168}
+                      height={94}
+                    />
+                    <p className={styles.subTitle}>{video.snippet.title}</p>
+                  </Link>
                 </div>
               </div>
             );

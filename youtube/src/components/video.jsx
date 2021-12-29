@@ -22,7 +22,6 @@ const Video = () => {
       .catch((error) => console.log("error", error));
   }, []);
 
-  console.log(videos);
   const allVideo = videos;
   return (
     <>

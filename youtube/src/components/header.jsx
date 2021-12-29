@@ -2,12 +2,16 @@ import React from "react";
 import styles from "../styles/header.module.css";
 import { faBell, faUser, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <header className={styles.header}>
       <ul className={styles.navbar}>
         <li>
-          <img src={process.env.PUBLIC_URL + "/images/logo.png"} alt="logo" />
+          <Link to="/">
+            <img src={process.env.PUBLIC_URL + "/images/logo.png"} alt="logo" />
+          </Link>
         </li>
         <li className={styles.searchInput}>
           <input type="text" placeholder="검색" className={styles.input} />

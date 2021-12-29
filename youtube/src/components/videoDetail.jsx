@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const VideoDetail = (props) => {
   const { video, title, description, allVideo } = props.location.state;
-  console.log(props.location.state);
+
   return (
     <div>
       <Header />
@@ -13,9 +13,10 @@ const VideoDetail = (props) => {
         <article className={styles.player}>
           <div className={styles.videoWrap}>
             <iframe
+              title="youtube"
               id="ytplayer"
               type="text/html"
-              src={`https://www.youtube.com/embed/${video.id}`}
+              src={`https://www.youtube.com/embed/${video}`}
               frameBorder="0"
               allowFullScreen
               className={styles.iframe}
@@ -28,14 +29,17 @@ const VideoDetail = (props) => {
         <article className={styles.subVideo}>
           {allVideo.map((video) => {
             return (
-              <div className={styles.subVideoInfo}>
-                <div className={styles.imgTitle}>
+              <div
+                key={`subvideoInfo-${video.id}`}
+                className={styles.subVideoInfo}
+              >
+                <div key={`imgTitle-${video.id}`} className={styles.imgTitle}>
                   <Link
                     key={`link-${video.id}`}
                     to={{
                       pathname: `/video-detail/${video.id}`,
                       state: {
-                        video: video,
+                        video: video.id,
                         title: title,
                         description: description,
                         allVideo: allVideo,
@@ -51,7 +55,9 @@ const VideoDetail = (props) => {
                       width={168}
                       height={94}
                     />
-                    <p className={styles.subTitle}>{video.snippet.title}</p>
+                    <p key={`subTitle-${video.id}`} className={styles.subTitle}>
+                      {video.snippet.title}
+                    </p>
                   </Link>
                 </div>
               </div>

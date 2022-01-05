@@ -1,20 +1,8 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React from "react";
 import "./App.css";
 
-import Video from "./components/video";
-import VideoDetail from "./components/videoDetail";
-
 function App() {
-  return (
-    <>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/video-detail/:id" component={VideoDetail} />
-          <Route path="/" component={Video} />
-        </Switch>
-      </BrowserRouter>
-    </>
-  );
+  return <h1>Hello</h1>;
 }
 
 export default App;

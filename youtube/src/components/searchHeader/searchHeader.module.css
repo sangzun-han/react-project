@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  height: 4rem;
+  padding: 0.5rem 1rem;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.input {
+  background: #121212;
+  flex-basis: 75%;
+  font-size: 1.2rem;
+  outline: none;
+  border: 1px solid #303030;
+  border-right: none;
+  color: white;
+}
+
+.input:focus {
+  border: 1px solid #3ea6ff;
+}
+
+.button {
+  border: 1px solid #212121;
+  border-radius: 0 2px 2px 0;
+  outline: 0;
+}
+.buttonImg {
+  height: 100%;
+  padding: 0.5em 2em;
+}

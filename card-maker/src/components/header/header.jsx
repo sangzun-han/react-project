@@ -21,7 +21,7 @@ const Head = styled.header`
 
 const Logout = styled.button`
   position: absolute;
-  right: 3em;
+  right: 1em;
   top: 1em;
   padding: 0.5rem;
   border-radius: 20%;

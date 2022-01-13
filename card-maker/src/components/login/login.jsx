@@ -11,9 +11,8 @@ const Login = ({ authService }) => {
       .login(provider)
       .then(console.log);
   };
-  console.log(authService);
   return (
-    <section>
+    <Article>
       <Header />
       <Section>
         <LoginTitle>Login</LoginTitle>
@@ -33,16 +32,24 @@ const Login = ({ authService }) => {
         </ul>
       </Section>
       <Footer />
-    </section>
+    </Article>
   );
 };
 
+const Article = styled.article`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
 const Section = styled.section`
-  width: 100%;
+  width: 30em;
   text-align: center;
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color: white;
 `;
 
 const LoginTitle = styled.h1`
@@ -62,7 +69,6 @@ const Google = styled.button`
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
-  margin-bottom: 1rem;
 `;
 
 const Github = styled.button`

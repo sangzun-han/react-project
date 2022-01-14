@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-const Header = () => {
+const Header = ({ onLogout }) => {
   return (
     <Head>
-      <Logout>Logout</Logout>
+      <Logout onClick={onLogout}>Logout</Logout>
       <Logo src="/images/logo.png" alt="logo" />
       <Title>Card Maker</Title>
     </Head>

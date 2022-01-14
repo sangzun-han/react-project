@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "@emotion/styled";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Footer from "../footer/footer";
 import Header from "../header/header";
+import { useHistory } from "react-router-dom";
 const Login = ({ authService }) => {
+  const history = useHistory();
+  const goToMaker = (uid) => {
+    history.push({
+      pathname: "/maker",
+      state: { id: uid },
+    });
+  };
+
   const onLogin = (event) => {
     const provider = event.currentTarget.textContent.split(" ").reverse()[0];
     authService //
       .login(provider)
-      .then(console.log);
+      .then((data) => goToMaker(data.user.uid));
   };
+
+  useEffect(() => {
+    authService //
+      .onAuthChange((user) => {
+        user && goToMaker(user.uid);
+      });
+  });
+
   return (
     <Article>
       <Header />

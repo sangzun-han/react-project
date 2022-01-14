@@ -72,6 +72,7 @@ const Makers = styled.section`
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: white;
 `;
 
 const Container = styled.div`

@@ -17,7 +17,6 @@ const Preview = ({ cards }) => {
 
 const Previewer = styled.section`
   flex-basis: 50%;
-  background-color: pink;
 `;
 
 const Title = styled.h1`

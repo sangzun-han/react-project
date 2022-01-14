@@ -15,7 +15,8 @@ const Editor = ({ cards }) => {
 
 const Edit = styled.section`
   flex-basis: 50%;
-  background-color: wheat;
+  border-right: 1px solid #e2e2e2;
+  padding: 0.5rem 2rem;
 `;
 
 const Title = styled.h1`

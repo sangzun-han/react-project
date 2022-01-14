@@ -1,14 +1,16 @@
 import styled from "@emotion/styled";
 import React from "react";
+import CardAddForm from "../cardAddForm/cardAddForm";
 import CardEditForm from "../cardEditForm/cardEditForm";
 
-const Editor = ({ cards }) => {
+const Editor = ({ cards, addCard }) => {
   return (
     <Edit>
       <Title>Card Maker</Title>
       {cards.map((card) => {
-        return <CardEditForm card={card} />;
+        return <CardEditForm key={card.id} card={card} />;
       })}
+      <CardAddForm onAdd={addCard} />
     </Edit>
   );
 };

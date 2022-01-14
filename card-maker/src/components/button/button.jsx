@@ -6,14 +6,14 @@ const Button = ({ name, onClick }) => {
 };
 
 const Btn = styled.button`
-  background-color: #e2e2e2;
+  background: linear-gradient(45deg, #9796f0, #fbc7d4);
   color: white;
   font-weight: bold;
   cursor: pointer;
   padding: 0.5rem;
   flex: 1 1 50%;
   font-size: 1rem;
-
+  border: none;
   &:hover {
     opacity: 0.8;
   }

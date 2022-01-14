@@ -55,11 +55,16 @@ const Maker = ({ authService }) => {
       }
     });
   });
+
+  const addCard = (card) => {
+    const update = [...cards, card];
+    setCards(update);
+  };
   return (
     <Makers>
       <Header onLogout={onLogout} />
       <Container>
-        <Editor cards={cards} />
+        <Editor cards={cards} addCard={addCard} />
         <Preview cards={cards} />
       </Container>
       <Footer />

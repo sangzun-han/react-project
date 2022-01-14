@@ -84,8 +84,7 @@ const Textarea = styled.textarea`
 
 const FileInput = styled.div`
   padding: 0;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
+  background: linear-gradient(45deg, #ee9ca7, #ffdde1);
   flex: 1 1 50%;
 `;
 export default CardEditForm;

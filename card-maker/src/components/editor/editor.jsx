@@ -1,17 +1,21 @@
 import styled from "@emotion/styled";
 import React from "react";
+import CardEditForm from "../cardEditForm/cardEditForm";
 
-const Editor = (props) => {
+const Editor = ({ cards }) => {
   return (
     <Edit>
       <Title>Card Maker</Title>
+      {cards.map((card) => {
+        return <CardEditForm card={card} />;
+      })}
     </Edit>
   );
 };
 
 const Edit = styled.section`
   flex-basis: 50%;
-  background-color: blue;
+  background-color: wheat;
 `;
 
 const Title = styled.h1`

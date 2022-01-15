@@ -7,8 +7,8 @@ const Preview = ({ cards }) => {
     <Previewer>
       <Title>Card Preview</Title>
       <Cards>
-        {cards.map((card) => {
-          return <Card card={card} />;
+        {Object.keys(cards).map((key) => {
+          return <Card key={key} card={cards[key]} />;
         })}
       </Cards>
     </Previewer>

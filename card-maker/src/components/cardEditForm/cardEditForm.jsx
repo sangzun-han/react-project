@@ -1,25 +1,75 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { useRef } from "react";
 import Button from "../button/button";
 import ImageFileInput from "../imageFileInput/imageFileInput";
 
-const CardEditForm = ({ card }) => {
+const CardEditForm = ({ card, updateCard, deleteCard }) => {
+  const nameRef = useRef();
+  const companyRef = useRef();
+  const themeRef = useRef();
+  const titleRef = useRef();
+  const emailRef = useRef();
+  const messageRef = useRef();
+
   const { name, company, title, email, message, theme, fileName, fileURL } =
     card;
 
-  const onSubmit = () => {};
+  const onChange = (event) => {
+    if (event.currentTarget == null) {
+      return;
+    } else {
+      event.preventDefault();
+      updateCard({
+        ...card,
+        [event.currentTarget.name]: event.currentTarget.value,
+      });
+    }
+  };
+  const onSubmit = (event) => {
+    deleteCard(card);
+  };
+
   return (
     <Form action="">
-      <Input type="text" name="name" value={name} />
-      <Input type="text" name="company" value={company} />
-      <Select name="theme" value={theme}>
+      <Input
+        ref={nameRef}
+        type="text"
+        name="name"
+        value={name}
+        onChange={onChange}
+      />
+      <Input
+        ref={companyRef}
+        type="text"
+        name="company"
+        value={company}
+        onChange={onChange}
+      />
+      <Select ref={themeRef} name="theme" value={theme} onChange={onChange}>
         <option value="light">Light</option>
         <option value="dark">Dark</option>
         <option value="colorful">Colorful</option>
       </Select>
-      <Input type="text" name="title" value={title} />
-      <Input type="text" name="email" value={email} />
-      <Textarea name="message" value={message}></Textarea>
+      <Input
+        ref={titleRef}
+        type="text"
+        name="title"
+        value={title}
+        onChange={onChange}
+      />
+      <Input
+        ref={emailRef}
+        type="text"
+        name="email"
+        value={email}
+        onChange={onChange}
+      />
+      <Textarea
+        ref={messageRef}
+        name="message"
+        value={message}
+        onChange={onChange}
+      ></Textarea>
       <FileInput>
         <ImageFileInput />
       </FileInput>

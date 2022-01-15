@@ -3,12 +3,19 @@ import React from "react";
 import CardAddForm from "../cardAddForm/cardAddForm";
 import CardEditForm from "../cardEditForm/cardEditForm";
 
-const Editor = ({ cards, addCard }) => {
+const Editor = ({ cards, addCard, updateCard, deleteCard }) => {
   return (
     <Edit>
       <Title>Card Maker</Title>
-      {cards.map((card) => {
-        return <CardEditForm key={card.id} card={card} />;
+      {Object.keys(cards).map((key) => {
+        return (
+          <CardEditForm
+            key={key.id}
+            card={cards[key]}
+            updateCard={updateCard}
+            deleteCard={deleteCard}
+          />
+        );
       })}
       <CardAddForm onAdd={addCard} />
     </Edit>

@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Button from "../button/button";
-import ImageFileInput from "../imageFileInput/imageFileInput";
-
-const CardAddForm = ({ onAdd }) => {
+const CardAddForm = ({ FileInput, onAdd }) => {
   const formRef = useRef();
   const nameRef = useRef();
   const companyRef = useRef();
@@ -11,6 +9,14 @@ const CardAddForm = ({ onAdd }) => {
   const titleRef = useRef();
   const emailRef = useRef();
   const messageRef = useRef();
+  const [file, setFile] = useState({ fileName: null, fileURL: null });
+
+  const onFileChange = (file) => {
+    setFile({
+      fileName: file.name,
+      fileURL: file.url,
+    });
+  };
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -23,10 +29,11 @@ const CardAddForm = ({ onAdd }) => {
       title: titleRef.current.value || "",
       email: emailRef.current.value || "",
       message: messageRef.current.value || "",
-      fileName: "",
-      fileURL: "",
+      fileName: file.fileName || "",
+      fileURL: file.fileURL || "",
     };
     formRef.current.reset();
+    setFile({ fileName: null, fileURL: null });
     onAdd(card);
   };
   return (
@@ -50,9 +57,9 @@ const CardAddForm = ({ onAdd }) => {
         name="message"
         placeholder="message"
       ></Textarea>
-      <FileInput>
-        <ImageFileInput />
-      </FileInput>
+      <FileWraper>
+        <FileInput name={file.fileName} onFileChange={onFileChange} />
+      </FileWraper>
       <Button name="Add" onClick={onSubmit} />
     </Form>
   );
@@ -112,7 +119,7 @@ const Textarea = styled.textarea`
   }
 `;
 
-const FileInput = styled.div`
+const FileWraper = styled.div`
   padding: 0;
   background: linear-gradient(45deg, #ee9ca7, #ffdde1);
   flex: 1 1 50%;

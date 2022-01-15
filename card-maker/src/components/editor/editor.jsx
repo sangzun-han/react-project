@@ -3,7 +3,7 @@ import React from "react";
 import CardAddForm from "../cardAddForm/cardAddForm";
 import CardEditForm from "../cardEditForm/cardEditForm";
 
-const Editor = ({ cards, addCard, updateCard, deleteCard }) => {
+const Editor = ({ FileInput, cards, addCard, updateCard, deleteCard }) => {
   return (
     <Edit>
       <Title>Card Maker</Title>
@@ -11,13 +11,14 @@ const Editor = ({ cards, addCard, updateCard, deleteCard }) => {
         return (
           <CardEditForm
             key={key.id}
+            FileInput={FileInput}
             card={cards[key]}
             updateCard={updateCard}
             deleteCard={deleteCard}
           />
         );
       })}
-      <CardAddForm onAdd={addCard} />
+      <CardAddForm FileInput={FileInput} onAdd={addCard} />
     </Edit>
   );
 };

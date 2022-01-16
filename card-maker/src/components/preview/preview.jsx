@@ -28,7 +28,6 @@ const Title = styled.h1`
 
 const Cards = styled.ul`
   width: 100%;
-  height: 100%;
   padding: 0.5rem 2rem;
   display: flex;
   flex-direction: column;

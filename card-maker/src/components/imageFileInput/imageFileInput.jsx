@@ -21,6 +21,7 @@ const ImageFileInput = ({ imageUploader, name, onFileChange }) => {
       url: uploaded.url,
     });
   };
+
   return (
     <Container>
       <Input

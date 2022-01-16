@@ -68,9 +68,11 @@ const Maker = ({ FileInput, authService }) => {
     setCards((cards) => {
       const updated = { ...cards };
       delete updated[card.id];
+      console.log(updated);
       return updated;
     });
   };
+
   return (
     <Makers>
       <Header onLogout={onLogout} />

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Editor from "../editor/editor";
 import Footer from "../footer/footer";
@@ -7,12 +7,12 @@ import Header from "../header/header";
 import Preview from "../preview/preview";
 const Maker = ({ FileInput, authService, cardRepo }) => {
   const history = useHistory();
+  const onLogout = useCallback(() => {
+    authService.logout();
+  }, [authService]);
   const historyState = history?.location?.state;
   const [cards, setCards] = useState({});
   const [userId, setUserId] = useState(historyState && historyState.id);
-  const onLogout = () => {
-    authService.logout();
-  };
 
   useEffect(() => {
     if (!userId) {

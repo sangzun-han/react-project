@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { memo } from "react";
 
-const Footer = () => {
+const Footer = memo(() => {
   return (
     <Foot>
       <Title>FOOTER</Title>
     </Foot>
   );
-};
+});
 
 const Foot = styled.footer`
   width: 100%;

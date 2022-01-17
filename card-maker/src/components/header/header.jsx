@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { memo } from "react";
 
-const Header = ({ onLogout }) => {
+const Header = memo(({ onLogout }) => {
+  console.log("Heaer");
   return (
     <Head>
       <Logout onClick={onLogout}>Logout</Logout>
@@ -9,7 +10,7 @@ const Header = ({ onLogout }) => {
       <Title>Card Maker</Title>
     </Head>
   );
-};
+});
 
 const Head = styled.header`
   width: 100%;

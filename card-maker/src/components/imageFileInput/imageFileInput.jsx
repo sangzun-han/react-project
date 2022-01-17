@@ -1,9 +1,9 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import styles from "./imageFileInput.module.css";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, memo } from "react";
 
-const ImageFileInput = ({ imageUploader, name, onFileChange }) => {
+const ImageFileInput = memo(({ imageUploader, name, onFileChange }) => {
   const [loading, setLoading] = useState(false);
 
   const inputRef = useRef();
@@ -42,7 +42,7 @@ const ImageFileInput = ({ imageUploader, name, onFileChange }) => {
       {loading && <Loading></Loading>}
     </Container>
   );
-};
+});
 
 const Container = styled.div`
   width: 100%;

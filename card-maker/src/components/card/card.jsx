@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 import styles from "../card/card.module.css";
-import React from "react";
+import React, { memo } from "react";
 
 const DEFAULT_IMAGE = "/images/default.gif";
 
-const Card = ({ card }) => {
+const Card = memo(({ card }) => {
   const { name, company, title, email, message, theme, fileURL } = card;
   const url = fileURL || DEFAULT_IMAGE;
+  console.log("ard");
   return (
     <li className={`${styles.card} ${pickStyles(theme)}`}>
       <Avatar src={url} alt="profile image" />
@@ -19,7 +20,7 @@ const Card = ({ card }) => {
       </Info>
     </li>
   );
-};
+});
 
 const Avatar = styled.img`
   width: 10em;

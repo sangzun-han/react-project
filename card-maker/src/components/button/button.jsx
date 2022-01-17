@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { memo } from "react";
 
-const Button = ({ name, onClick }) => {
+const Button = memo(({ name, onClick }) => {
   return <Btn onClick={onClick}>{name}</Btn>;
-};
+});
 
 const Btn = styled.button`
   background: linear-gradient(45deg, #9796f0, #fbc7d4);

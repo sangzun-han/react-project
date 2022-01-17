@@ -27,6 +27,7 @@ const Edit = styled.section`
   flex-basis: 50%;
   border-right: 1px solid #e2e2e2;
   padding: 0.5rem 2rem;
+  overflow-y: auto;
 `;
 
 const Title = styled.h1`

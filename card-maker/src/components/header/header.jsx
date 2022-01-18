@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import React, { memo } from "react";
 
 const Header = memo(({ onLogout }) => {
-  console.log("Heaer");
   return (
     <Head>
       <Logout onClick={onLogout}>Logout</Logout>

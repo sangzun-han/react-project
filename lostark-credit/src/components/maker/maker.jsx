@@ -48,7 +48,6 @@ const Maker = ({ FileInput, authService, cardRepo }) => {
     setCards((cards) => {
       const updated = { ...cards };
       delete updated[card.id];
-      console.log(updated);
       return updated;
     });
 

@@ -5,7 +5,7 @@ import Card from "../card/card";
 const Preview = ({ cards }) => {
   return (
     <Previewer>
-      <Title>미리보기</Title>
+      <Title>Card Preview</Title>
       <Cards>
         {Object.keys(cards).map((key) => {
           return <Card key={key} card={cards[key]} />;

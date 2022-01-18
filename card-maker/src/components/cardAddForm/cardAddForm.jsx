@@ -46,15 +46,11 @@ const CardAddForm = memo(({ FileInput, onAdd }) => {
         placeholder="Company"
       />
       <Select ref={themeRef} name="theme" placeholder="Theme">
-        <option placeholder="gray">gray</option>
+        <option placeholder="light">light</option>
         <option placeholder="dark">dark</option>
+        <option placeholder="colorful">colorful</option>
       </Select>
-      <Input
-        ref={titleRef}
-        type="text"
-        name="title"
-        placeholder="CARD NUMBER"
-      />
+      <Input ref={titleRef} type="text" name="title" placeholder="title" />
       <Input ref={emailRef} type="text" name="email" placeholder="email" />
       <Textarea
         ref={messageRef}
@@ -87,7 +83,6 @@ const Input = styled.input`
   border-right: 1px solid black;
   background: white;
   flex: 1 1 30%;
-
   &:focus {
     outline: 0;
   }
@@ -102,7 +97,6 @@ const Select = styled.select`
   border-right: 1px solid black;
   background: white;
   flex: 1 1 30%;
-
   &:focus {
     outline: 0;
   }
@@ -117,7 +111,6 @@ const Textarea = styled.textarea`
   border-right: 1px solid black;
   background: white;
   flex-basis: 100%;
-
   &:focus {
     outline: 0;
   }

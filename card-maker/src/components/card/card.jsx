@@ -10,17 +10,14 @@ const Card = memo(({ card }) => {
 
   return (
     <li className={`${styles.card} ${pickStyles(theme)}`}>
-      <Avatar src="/images/gray.png" alt="cardlogo" />
-      <Logo src="/images/lostark-logo.png" alt="logo" />
-      <Chip />
-      <Bc />
-      {/* <Info>
+      <Avatar src={url} alt="profile image" />
+      <Info>
         <Name>{name}</Name>
         <Company>{company}</Company>
         <Title>{title}</Title>
         <Email>{email}</Email>
         <Message>{message}</Message>
-      </Info> */}
+      </Info>
     </li>
   );
 });
@@ -28,36 +25,11 @@ const Card = memo(({ card }) => {
 const Avatar = styled.img`
   width: 10em;
   height: 10em;
+  padding: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 1em;
   border-radius: 50%;
 `;
-
-const Logo = styled.img`
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 6rem;
-`;
-
-const Bc = styled.div`
-  position: absolute;
-  bottom: 0.77rem;
-  right: 0.77rem;
-  border-radius: 48%;
-  width: 32px;
-  height: 32px;
-  background: rgb(155, 155, 155);
-`;
-
-const Chip = styled.div`
-  position: absolute;
-  width: 30px;
-  height: 45px;
-  top: 2rem;
-  right: 4.5rem;
-  background: linear-gradient(135deg, #beb09a 0%, #bbaa97 44%, #c1b8a2 100%);
-  border-radius: 8px;
-`;
-
 const Info = styled.div`
   width: 100%;
 `;
@@ -72,7 +44,6 @@ const Company = styled.p`
   margin: 0;
   font-size: 0.8rem;
   margin-bottom: 1rem;
-
   &:after {
     content: "";
     display: block;
@@ -100,10 +71,12 @@ const Message = styled.p`
 
 function pickStyles(theme) {
   switch (theme) {
-    case "gray":
-      return styles.gray;
     case "dark":
       return styles.dark;
+    case "light":
+      return styles.light;
+    case "colorful":
+      return styles.colorful;
     default:
       throw new Error(`unknown theme: ${theme}`);
   }

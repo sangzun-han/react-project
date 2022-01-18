@@ -6,7 +6,7 @@ import CardEditForm from "../cardEditForm/cardEditForm";
 const Editor = ({ FileInput, cards, addCard, updateCard, deleteCard }) => {
   return (
     <Edit>
-      <Title>Card Maker</Title>
+      <Title>로스트아크 카드 만들기</Title>
       {Object.keys(cards).map((key) => {
         return (
           <CardEditForm

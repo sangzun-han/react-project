@@ -1,0 +1,31 @@
+.card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0.2em 0;
+  background-color: white;
+  box-shadow: 6px 6px 8px 0px rgba(217, 217, 217, 1);
+  max-width: 30rem;
+}
+
+.card.dark {
+  background-color: black;
+  color: white;
+}
+
+.card.light {
+  background-color: white;
+  color: black;
+}
+
+.card.colorful {
+  background: linear-gradient(
+    166deg,
+    rgba(237, 193, 211, 1) 0%,
+    rgba(212, 149, 161, 1) 60%,
+    rgba(162, 63, 63, 1) 100%,
+    rgba(127, 188, 242, 1) 100%
+  );
+}

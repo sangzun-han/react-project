@@ -6,6 +6,7 @@ const Button = memo(({ name, onClick }) => {
 });
 
 const Btn = styled.button`
+  width: 100%;
   background: linear-gradient(45deg, #9796f0, #fbc7d4);
   color: white;
   font-weight: bold;

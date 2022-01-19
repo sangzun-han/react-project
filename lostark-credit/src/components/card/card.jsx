@@ -3,7 +3,7 @@ import styles from "../card/card.module.css";
 import React, { memo } from "react";
 
 const Card = memo(({ card }) => {
-  const { name, company, title, email, message, theme } = card;
+  const { theme } = card;
 
   return (
     <li className={`${styles.card} ${pickStyles(theme)}`}>
@@ -11,13 +11,6 @@ const Card = memo(({ card }) => {
       <Logo src="/images/lostark-logo.png" alt="card-logo" />
       <Chip />
       <Bc />
-      {/* <Info>
-        <Name>{name}</Name>
-        <Company>{company}</Company>
-        <Title>{title}</Title>
-        <Email>{email}</Email>
-        <Message>{message}</Message>
-      </Info> */}
     </li>
   );
 });
@@ -51,44 +44,6 @@ const Chip = styled.div`
   background: linear-gradient(135deg, #beb09a 0%, #bbaa97 44%, #c1b8a2 100%);
   border-radius: 8px;
 `;
-const Info = styled.div`
-  width: 100%;
-`;
-
-const Name = styled.h1`
-  margin: 0;
-  font-size: 1.2rem;
-  margin-bottom: 0.2rem;
-`;
-
-const Company = styled.p`
-  margin: 0;
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
-  &:after {
-    content: "";
-    display: block;
-    width: 90%;
-    height: 2px;
-    background-color: wheat;
-    transform: translateY(0.5rem);
-  }
-`;
-const Title = styled.p`
-  margin: 0;
-  font-size: 0.8rem;
-  margin-bottom: 0.2rem;
-`;
-const Email = styled.p`
-  margin: 0;
-  font-size: 0.8rem;
-  margin-bottom: 0.2rem;
-`;
-const Message = styled.p`
-  margin: 0;
-  font-size: 0.8rem;
-  margin-bottom: 0.2rem;
-`;
 
 function pickStyles(theme) {
   switch (theme) {
@@ -96,6 +51,8 @@ function pickStyles(theme) {
       return styles.gray;
     case "dark":
       return styles.dark;
+    case "긁자에요":
+      return styles.swipe;
     default:
       throw new Error(`unknown theme: ${theme}`);
   }

@@ -1,3 +1,14 @@
+.container {
+  width: 228px;
+  height: 356px;
+  border-radius: 1rem;
+  margin: auto;
+  position: relative;
+  cursor: pointer;
+  perspective: 50rem;
+  max-width: 30rem;
+}
+
 .card {
   width: 228px;
   height: 356px;
@@ -7,13 +18,35 @@
   border-radius: 1rem;
   margin-bottom: 0.5rem;
   padding: 0.2em 0;
-  background-color: white;
   box-shadow: 6px 6px 8px 0px rgba(217, 217, 217, 1);
-  max-width: 30rem;
-  position: relative;
+  backface-visibility: hidden;
+  visibility: visible;
+  transition: all 1.2s;
 }
 
-.card.gray {
+.front {
+  position: absolute;
+  backface-visibility: hidden;
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.back {
+  position: absolute;
+  z-index: 1;
+  transform: rotateY(-180deg);
+}
+
+.container:hover .front {
+  transform: rotateY(180deg);
+}
+
+.container:hover .back {
+  transform: rotateY(0deg);
+}
+
+.card.gray,
+.container.gray {
   background-color: #777a85;
 }
 

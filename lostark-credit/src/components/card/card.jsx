@@ -6,12 +6,17 @@ const Card = memo(({ card }) => {
   const { theme } = card;
 
   return (
-    <li className={`${styles.card} ${pickStyles(theme)}`}>
-      <LostArk src="/images/gray.png" alt="logo" />
-      <Logo src="/images/lostark-logo.png" alt="card-logo" />
-      <Chip />
-      <Bc />
-    </li>
+    <div className={styles.container}>
+      <div className={`${styles.card} ${pickStyles(theme)} ${styles.front}`}>
+        <LostArk src="/images/gray.png" alt="logo" />
+        <Logo src="/images/lostark-logo.png" alt="card-logo" />
+        <Chip />
+        <Bc />
+      </div>
+      <div
+        className={`${styles.card} ${pickStyles(theme)} ${styles.back}`}
+      ></div>
+    </div>
   );
 });
 

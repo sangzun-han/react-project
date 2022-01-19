@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import React, { memo, useRef, useState } from "react";
+import styles from "../cardAddForm/cardAddForm.module.css";
 import Button from "../button/button";
 const CardAddForm = memo(({ FileInput, onAdd }) => {
   const formRef = useRef();
@@ -37,87 +37,64 @@ const CardAddForm = memo(({ FileInput, onAdd }) => {
     onAdd(card);
   };
   return (
-    <Form ref={formRef} action="">
-      <Input ref={nameRef} type="text" name="name" placeholder="Name" />
-      <Input
-        ref={companyRef}
-        type="text"
-        name="company"
-        placeholder="Company"
-      />
-      <Select ref={themeRef} name="theme" placeholder="Theme">
-        <option placeholder="gray">gray</option>
-        <option placeholder="dark">dark</option>
-      </Select>
-      <Input ref={titleRef} type="text" name="title" placeholder="title" />
-      <Input ref={emailRef} type="text" name="email" placeholder="email" />
-      <Textarea
-        ref={messageRef}
-        name="message"
-        placeholder="message"
-      ></Textarea>
-      <FileWraper>
-        <FileInput name={file.fileName} onFileChange={onFileChange} />
-      </FileWraper>
-      <Button name="Add" onClick={onSubmit} />
-    </Form>
+    <div className={styles.checkout}>
+      <form ref={formRef} action="">
+        <fieldset>
+          <label className={styles.label} htmlFor="card-number">
+            card number
+          </label>
+          <input
+            className={[styles.input, styles.number].join(" ")}
+            type="num"
+            maxLength={4}
+          />
+          <input
+            className={[styles.input, styles.number].join(" ")}
+            type="num"
+            maxLength={4}
+          />
+          <input
+            className={[styles.input, styles.number].join(" ")}
+            type="num"
+            maxLength={4}
+          />
+          <input
+            className={[styles.input, styles.number].join(" ")}
+            type="num"
+            maxLength={4}
+          />
+        </fieldset>
+
+        <fieldset>
+          <label className={styles.label} htmlFor="card-holder">
+            card holder
+          </label>
+          <input className={[styles.input, styles.holder].join(" ")} />
+        </fieldset>
+        <div className={styles.flex}>
+          <fieldset>
+            <label className={styles.label} htmlFor="card-number">
+              expiration date
+            </label>
+
+            <input className={[styles.input, styles.expiration].join(" ")} />
+            <input className={[styles.input, styles.expiration].join(" ")} />
+          </fieldset>
+
+          <fieldset>
+            <label className={styles.label} htmlFor="card-ccv">
+              ccv
+            </label>
+
+            <input
+              className={[styles.input, styles.ccv].join(" ")}
+              maxLength={3}
+            />
+          </fieldset>
+        </div>
+      </form>
+    </div>
   );
 });
 
-const Form = styled.form`
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  margin-bottom: 1rem;
-`;
-
-const Input = styled.input`
-  font-size: 0.8rem;
-  width: 100%;
-  border: 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  background: white;
-  flex: 1 1 30%;
-  &:focus {
-    outline: 0;
-  }
-`;
-
-const Select = styled.select`
-  font-size: 0.8rem;
-  width: 100%;
-  border: 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  background: white;
-  flex: 1 1 30%;
-  &:focus {
-    outline: 0;
-  }
-`;
-
-const Textarea = styled.textarea`
-  font-size: 0.8rem;
-  width: 100%;
-  border: 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  background: white;
-  flex-basis: 100%;
-  &:focus {
-    outline: 0;
-  }
-`;
-
-const FileWraper = styled.div`
-  padding: 0;
-  background: linear-gradient(45deg, #ee9ca7, #ffdde1);
-  flex: 1 1 50%;
-`;
 export default CardAddForm;

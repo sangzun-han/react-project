@@ -7,7 +7,8 @@ const Card = memo(({ card }) => {
 
   return (
     <li className={`${styles.card} ${pickStyles(theme)}`}>
-      <Logo src="/images/gray.png" alt="card-logo" />
+      <LostArk src="/images/gray.png" alt="logo" />
+      <Logo src="/images/lostark-logo.png" alt="card-logo" />
       <Chip />
       <Bc />
       {/* <Info>
@@ -21,6 +22,9 @@ const Card = memo(({ card }) => {
   );
 });
 
+const LostArk = styled.img`
+  width: 10rem;
+`;
 const Logo = styled.img`
   position: absolute;
   top: 1rem;

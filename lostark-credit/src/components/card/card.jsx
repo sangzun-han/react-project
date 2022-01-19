@@ -3,6 +3,7 @@ import styles from "../card/card.module.css";
 import React, { memo } from "react";
 
 const Card = memo(({ card }) => {
+  const QRCode = require("qrcode.react");
   const {
     number1,
     number2,
@@ -29,11 +30,9 @@ const Card = memo(({ card }) => {
           <Font>
             {number1} {number2}
           </Font>
-
           <Font>
             {number3} {number4}
           </Font>
-
           <Font className={styles.flex}>
             <div>
               <p>VALID</p>
@@ -47,10 +46,11 @@ const Card = memo(({ card }) => {
               <span className={styles.white}>{cvc}</span>
             </div>
           </Font>
-
           <Font className={styles.white}>
             <span>{holder}</span>
           </Font>
+          <QRCode value="https://github.com/sangzun-han/react-project/tree/main/lostark-credit" />
+          ,
         </ul>
       </div>
     </div>

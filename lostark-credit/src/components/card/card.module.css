@@ -1,3 +1,18 @@
+.flex {
+  display: flex;
+}
+
+.white {
+  color: white;
+}
+
+.mr {
+  margin-right: 0.5rem;
+}
+
+.me {
+  margin-left: 0.5rem;
+}
 .container {
   width: 228px;
   height: 356px;
@@ -13,11 +28,10 @@
   width: 228px;
   height: 356px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   border-radius: 1rem;
   margin-bottom: 0.5rem;
-  padding: 0.2em 0;
   box-shadow: 6px 6px 8px 0px rgba(217, 217, 217, 1);
   backface-visibility: hidden;
   visibility: visible;
@@ -28,13 +42,13 @@
   position: absolute;
   backface-visibility: hidden;
   transform: rotateY(0deg);
-  z-index: 2;
+  z-index: 1;
 }
 
 .back {
   position: absolute;
-  z-index: 1;
-  transform: rotateY(-180deg);
+  z-index: 2;
+  /* transform: rotateY(-180deg); */
 }
 
 .container:hover .front {

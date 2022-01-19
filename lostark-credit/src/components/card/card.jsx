@@ -3,7 +3,17 @@ import styles from "../card/card.module.css";
 import React, { memo } from "react";
 
 const Card = memo(({ card }) => {
-  const { theme } = card;
+  const {
+    number1,
+    number2,
+    number3,
+    number4,
+    holder,
+    year,
+    month,
+    theme,
+    cvc,
+  } = card;
 
   return (
     <div className={styles.container}>
@@ -13,9 +23,36 @@ const Card = memo(({ card }) => {
         <Chip />
         <Bc />
       </div>
-      <div
-        className={`${styles.card} ${pickStyles(theme)} ${styles.back}`}
-      ></div>
+      <div className={`${styles.card} ${pickStyles(theme)} ${styles.back}`}>
+        <Auth></Auth>
+        <ul>
+          <Font>
+            {number1} {number2}
+          </Font>
+
+          <Font>
+            {number3} {number4}
+          </Font>
+
+          <Font className={styles.flex}>
+            <div>
+              <p>VALID</p>
+              <p>THRU</p>
+            </div>
+            <span className={`${styles.white} ${styles.mr}`}>
+              {year}/{month}
+            </span>
+            <div className={styles.flex}>
+              <p>CVC</p>
+              <span className={styles.white}>{cvc}</span>
+            </div>
+          </Font>
+
+          <Font className={styles.white}>
+            <span>{holder}</span>
+          </Font>
+        </ul>
+      </div>
     </div>
   );
 });
@@ -23,6 +60,7 @@ const Card = memo(({ card }) => {
 const LostArk = styled.img`
   width: 10rem;
 `;
+
 const Logo = styled.img`
   position: absolute;
   top: 1rem;
@@ -48,6 +86,22 @@ const Chip = styled.div`
   right: 4.5rem;
   background: linear-gradient(135deg, #beb09a 0%, #bbaa97 44%, #c1b8a2 100%);
   border-radius: 8px;
+`;
+
+const Auth = styled.li`
+  width: 20px;
+  height: 100%;
+  background-color: #b6b7bc;
+`;
+
+const Font = styled.li`
+  width: 150px;
+  font-family: fantasy;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0;
+  margin-bottom: 0.3rem;
+  color: papayawhip;
 `;
 
 function pickStyles(theme) {

@@ -1,7 +1,7 @@
 import React, { memo, useRef, useState } from "react";
 import styles from "../cardAddForm/cardAddForm.module.css";
 import Button from "../button/button";
-const CardAddForm = memo(({ FileInput, onAdd }) => {
+const CardAddForm = memo(({ onAdd }) => {
   const formRef = useRef();
   const number1 = useRef();
   const number2 = useRef();
@@ -11,7 +11,7 @@ const CardAddForm = memo(({ FileInput, onAdd }) => {
   const themeRef = useRef();
   const yearRef = useRef();
   const monthRef = useRef();
-
+  const cvcRef = useRef();
   const onSubmit = (event) => {
     event.preventDefault();
 
@@ -25,7 +25,9 @@ const CardAddForm = memo(({ FileInput, onAdd }) => {
       holder: holderRef.current.value || "",
       year: yearRef.current.value || "",
       month: monthRef.current.value || "",
+      cvc: cvcRef.current.value || "",
     };
+
     formRef.current.reset();
     onAdd(card);
   };
@@ -121,10 +123,11 @@ const CardAddForm = memo(({ FileInput, onAdd }) => {
 
           <fieldset>
             <label className={styles.label} htmlFor="card-ccv">
-              ccv
+              cvc
             </label>
 
             <input
+              ref={cvcRef}
               className={[styles.input, styles.ccv].join(" ")}
               maxLength={3}
             />

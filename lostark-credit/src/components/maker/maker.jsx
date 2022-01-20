@@ -5,7 +5,7 @@ import Editor from "../editor/editor";
 import Footer from "../footer/footer";
 import Header from "../header/header";
 import Preview from "../preview/preview";
-const Maker = ({ FileInput, authService, cardRepo }) => {
+const Maker = ({ authService, cardRepo }) => {
   const history = useHistory();
   const onLogout = useCallback(() => {
     authService.logout();
@@ -59,7 +59,6 @@ const Maker = ({ FileInput, authService, cardRepo }) => {
       <Header onLogout={onLogout} />
       <Container>
         <Editor
-          FileInput={FileInput}
           cards={cards}
           addCard={createOrUpdateCard}
           updateCard={createOrUpdateCard}

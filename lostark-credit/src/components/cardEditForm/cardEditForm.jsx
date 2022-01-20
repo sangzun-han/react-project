@@ -1,29 +1,35 @@
-import styled from "@emotion/styled";
+import styles from "../cardEditForm/cardEditForm.module.css";
 import React, { useRef } from "react";
 import Button from "../button/button";
 
-const CardEditForm = ({ FileInput, card, updateCard, deleteCard }) => {
-  const nameRef = useRef();
-  const companyRef = useRef();
+const CardEditForm = ({ card, updateCard, deleteCard }) => {
+  const number1Ref = useRef();
+  const number2Ref = useRef();
+  const number3Ref = useRef();
+  const number4Ref = useRef();
+  const holderRef = useRef();
   const themeRef = useRef();
-  const titleRef = useRef();
-  const emailRef = useRef();
-  const messageRef = useRef();
+  const yearRef = useRef();
+  const monthRef = useRef();
+  const cvcRef = useRef();
 
-  const { name, company, title, email, message, theme, fileName } = card;
+  const {
+    number1,
+    number2,
+    number3,
+    number4,
+    holder,
+    year,
+    month,
+    theme,
+    cvc,
+  } = card;
 
-  const onFileChange = (file) => {
-    updateCard({
-      ...card,
-      fileName: file.name,
-      fileURL: file.url,
-    });
-  };
   const onChange = (event) => {
+    console.log(event.currentTarget.value);
     if (event.currentTarget == null) {
       return;
     } else {
-      event.preventDefault();
       updateCard({
         ...card,
         [event.currentTarget.name]: event.currentTarget.value,
@@ -36,110 +42,141 @@ const CardEditForm = ({ FileInput, card, updateCard, deleteCard }) => {
   };
 
   return (
-    <Form action="">
-      <Input
-        ref={nameRef}
-        type="text"
-        name="name"
-        value={name}
-        onChange={onChange}
-      />
-      <Input
-        ref={companyRef}
-        type="text"
-        name="company"
-        value={company}
-        onChange={onChange}
-      />
-      <Select ref={themeRef} name="theme" value={theme} onChange={onChange}>
-        <option value="gray">gray</option>
-        <option value="dark">dark</option>
-      </Select>
-      <Input
-        ref={titleRef}
-        type="text"
-        name="title"
-        value={title}
-        onChange={onChange}
-      />
-      <Input
-        ref={emailRef}
-        type="text"
-        name="email"
-        value={email}
-        onChange={onChange}
-      />
-      <Textarea
-        ref={messageRef}
-        name="message"
-        value={message}
-        onChange={onChange}
-      ></Textarea>
-      <FileWraper>
-        <FileInput name={fileName} onFileChange={onFileChange} />
-      </FileWraper>
-      <Button name="Delete" onClick={onSubmit} />
-    </Form>
+    <div className={styles.checkout}>
+      <form action="">
+        <fieldset>
+          <label className={styles.label} htmlFor="theme">
+            테마
+          </label>
+          <select
+            ref={themeRef}
+            name="theme"
+            placeholder="Theme"
+            onChange={onChange}
+          >
+            <option placeholder="gray">gray</option>
+            <option placeholder="dark">dark</option>
+            <option placeholder="dark">모코코</option>
+            <option placeholder="dark">긁자에요</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <label className={styles.label} htmlFor="card-number">
+            card number
+          </label>
+          <input
+            ref={number1Ref}
+            className={`${styles.input} ${styles.number}`}
+            type="num"
+            maxLength={4}
+            name="number1"
+            value={number1}
+            onChange={onChange}
+          />
+          <input
+            ref={number2Ref}
+            className={`${styles.input} ${styles.number}`}
+            type="num"
+            name="number2"
+            maxLength={4}
+            value={number2}
+            onChange={onChange}
+          />
+          <input
+            ref={number3Ref}
+            className={`${styles.input} ${styles.number}`}
+            type="num"
+            name="number3"
+            maxLength={4}
+            value={number3}
+            onChange={onChange}
+          />
+          <input
+            ref={number4Ref}
+            className={`${styles.input} ${styles.number}`}
+            type="num"
+            name="number4"
+            maxLength={4}
+            value={number4}
+            onChange={onChange}
+          />
+        </fieldset>
+
+        <fieldset>
+          <label className={styles.label} htmlFor="card-holder">
+            card holder
+          </label>
+          <input
+            ref={holderRef}
+            className={`${styles.input} ${styles.holder}`}
+            name="holder"
+            minLength={2}
+            maxLength={12}
+            value={holder}
+            onChange={onChange}
+          />
+        </fieldset>
+        <div className={styles.flex}>
+          <fieldset>
+            <label className={styles.label} htmlFor="card-number">
+              expiration date
+            </label>
+
+            <select
+              ref={yearRef}
+              className={`${styles.input$} ${styles.expiration}`}
+              name="year"
+              value={year}
+              onChange={onChange}
+            >
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+            </select>
+            <select
+              ref={monthRef}
+              className={`${styles.input$} ${styles.expiration}`}
+              name="month"
+              value={month}
+              onChange={onChange}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+          </fieldset>
+
+          <fieldset>
+            <label className={styles.label} htmlFor="card-ccv">
+              cvc
+            </label>
+
+            <input
+              ref={cvcRef}
+              className={`${styles.input} ${styles.cvc}`}
+              name="cvc"
+              maxLength={3}
+              value={cvc}
+              onChange={onChange}
+            />
+          </fieldset>
+        </div>
+
+        <Button name="삭제" onClick={onSubmit} />
+      </form>
+    </div>
   );
 };
 
-const Form = styled.form`
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  margin-bottom: 1rem;
-`;
-
-const Input = styled.input`
-  font-size: 0.8rem;
-  width: 100%;
-  border: 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  background: white;
-  flex: 1 1 30%;
-
-  &:focus {
-    outline: 0;
-  }
-`;
-
-const Select = styled.select`
-  font-size: 0.8rem;
-  width: 100%;
-  border: 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  background: white;
-  flex: 1 1 30%;
-
-  &:focus {
-    outline: 0;
-  }
-`;
-
-const Textarea = styled.textarea`
-  font-size: 0.8rem;
-  width: 100%;
-  border: 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  background: white;
-  flex-basis: 100%;
-
-  &:focus {
-    outline: 0;
-  }
-`;
-
-const FileWraper = styled.div`
-  padding: 0;
-  background: linear-gradient(45deg, #ee9ca7, #ffdde1);
-  flex: 1 1 50%;
-`;
 export default CardEditForm;

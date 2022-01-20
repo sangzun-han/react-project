@@ -41,7 +41,7 @@ const Card = memo(({ card }) => {
             <span className={`${styles.white} ${styles.mr}`}>
               {year}/{month}
             </span>
-            <div className={styles.flex}>
+            <div className={`${styles.flex} ${styles.cvc}`}>
               <p>CVC</p>
               <span className={styles.white}>{cvc}</span>
             </div>
@@ -49,8 +49,13 @@ const Card = memo(({ card }) => {
           <Font className={styles.white}>
             <span>{holder}</span>
           </Font>
-          <QRCode value="https://github.com/sangzun-han/react-project/tree/main/lostark-credit" />
-          ,
+          <QRCode
+            value={
+              "https://github.com/sangzun-han/react-project/tree/main/lostark-credit"
+            }
+            size={48}
+            renderAs={"svg"}
+          />
         </ul>
       </div>
     </div>

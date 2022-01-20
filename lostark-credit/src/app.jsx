@@ -4,7 +4,7 @@ import "./app.css";
 import Login from "./components/login/login";
 import Maker from "./components/maker/maker";
 
-function App({ FileInput, authService, cardRepo }) {
+function App({ authService, cardRepo }) {
   return (
     <Wrapper>
       <BrowserRouter>
@@ -13,11 +13,7 @@ function App({ FileInput, authService, cardRepo }) {
             <Login authService={authService} />
           </Route>
           <Route path="/maker">
-            <Maker
-              FileInput={FileInput}
-              authService={authService}
-              cardRepo={cardRepo}
-            />
+            <Maker authService={authService} cardRepo={cardRepo} />
           </Route>
         </Switch>
       </BrowserRouter>

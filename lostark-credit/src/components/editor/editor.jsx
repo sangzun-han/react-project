@@ -3,7 +3,7 @@ import React from "react";
 import CardAddForm from "../cardAddForm/cardAddForm";
 import CardEditForm from "../cardEditForm/cardEditForm";
 
-const Editor = ({ FileInput, cards, addCard, updateCard, deleteCard }) => {
+const Editor = ({ cards, addCard, updateCard, deleteCard }) => {
   return (
     <Edit>
       <Title>로스트아크 카드 만들기</Title>
@@ -11,14 +11,13 @@ const Editor = ({ FileInput, cards, addCard, updateCard, deleteCard }) => {
         return (
           <CardEditForm
             key={key}
-            FileInput={FileInput}
             card={cards[key]}
             updateCard={updateCard}
             deleteCard={deleteCard}
           />
         );
       })}
-      <CardAddForm FileInput={FileInput} onAdd={addCard} />
+      <CardAddForm onAdd={addCard} />
     </Edit>
   );
 };

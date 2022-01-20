@@ -1,9 +1,10 @@
+import React, { memo } from "react";
 import styled from "@emotion/styled";
 import styles from "../card/card.module.css";
-import React, { memo } from "react";
 
 const Card = memo(({ card }) => {
   const QRCode = require("qrcode.react");
+
   const {
     number1,
     number2,

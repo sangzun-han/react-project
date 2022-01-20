@@ -10,10 +10,6 @@
   margin-right: 0.5rem;
 }
 
-.me {
-  margin-left: 0.5rem;
-}
-
 .container {
   width: 228px;
   height: 356px;
@@ -23,6 +19,7 @@
   cursor: pointer;
   perspective: 50rem;
   max-width: 30rem;
+  margin-bottom: 1rem;
 }
 
 .card {

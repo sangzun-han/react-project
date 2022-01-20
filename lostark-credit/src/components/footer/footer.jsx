@@ -4,7 +4,7 @@ import React, { memo } from "react";
 const Footer = memo(() => {
   return (
     <Foot>
-      <Title>FOOTER</Title>
+      <Img src="/images/frust.png" />
     </Foot>
   );
 });
@@ -15,8 +15,9 @@ const Foot = styled.footer`
   background: linear-gradient(#c9d6ff, #e2e2e2);
 `;
 
-const Title = styled.p`
-  color: black;
+const Img = styled.img`
+  width: 100px;
+  margin: 0 auto;
 `;
 
 export default Footer;

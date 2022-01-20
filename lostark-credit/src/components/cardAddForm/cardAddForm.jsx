@@ -41,8 +41,8 @@ const CardAddForm = memo(({ onAdd }) => {
           <select ref={themeRef} name="theme" placeholder="Theme">
             <option placeholder="gray">gray</option>
             <option placeholder="dark">dark</option>
-            <option placeholder="dark">모코코</option>
-            <option placeholder="dark">긁자에요</option>
+            {/* <option placeholder="dark">모코코</option>
+            <option placeholder="dark">긁자에요</option> */}
           </select>
         </fieldset>
         <fieldset>

@@ -1,18 +1,8 @@
 import styles from "../cardEditForm/cardEditForm.module.css";
-import React, { useRef } from "react";
+import React from "react";
 import Button from "../button/button";
 
 const CardEditForm = ({ card, updateCard, deleteCard }) => {
-  const number1Ref = useRef();
-  const number2Ref = useRef();
-  const number3Ref = useRef();
-  const number4Ref = useRef();
-  const holderRef = useRef();
-  const themeRef = useRef();
-  const yearRef = useRef();
-  const monthRef = useRef();
-  const cvcRef = useRef();
-
   const {
     number1,
     number2,
@@ -26,7 +16,6 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
   } = card;
 
   const onChange = (event) => {
-    console.log(event.currentTarget.value);
     if (event.currentTarget == null) {
       return;
     } else {
@@ -36,6 +25,7 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
       });
     }
   };
+
   const onSubmit = (event) => {
     event.preventDefault();
     deleteCard(card);
@@ -49,15 +39,15 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
             테마
           </label>
           <select
-            ref={themeRef}
             name="theme"
             placeholder="Theme"
+            value={theme}
             onChange={onChange}
           >
             <option placeholder="gray">gray</option>
             <option placeholder="dark">dark</option>
-            <option placeholder="dark">모코코</option>
-            <option placeholder="dark">긁자에요</option>
+            {/* <option placeholder="dark">모코코</option>
+            <option placeholder="dark">긁자에요</option> */}
           </select>
         </fieldset>
         <fieldset>
@@ -65,7 +55,6 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
             card number
           </label>
           <input
-            ref={number1Ref}
             className={`${styles.input} ${styles.number}`}
             type="num"
             maxLength={4}
@@ -74,7 +63,6 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
             onChange={onChange}
           />
           <input
-            ref={number2Ref}
             className={`${styles.input} ${styles.number}`}
             type="num"
             name="number2"
@@ -83,7 +71,6 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
             onChange={onChange}
           />
           <input
-            ref={number3Ref}
             className={`${styles.input} ${styles.number}`}
             type="num"
             name="number3"
@@ -92,7 +79,6 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
             onChange={onChange}
           />
           <input
-            ref={number4Ref}
             className={`${styles.input} ${styles.number}`}
             type="num"
             name="number4"
@@ -107,7 +93,6 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
             card holder
           </label>
           <input
-            ref={holderRef}
             className={`${styles.input} ${styles.holder}`}
             name="holder"
             minLength={2}
@@ -123,7 +108,6 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
             </label>
 
             <select
-              ref={yearRef}
               className={`${styles.input$} ${styles.expiration}`}
               name="year"
               value={year}
@@ -136,7 +120,6 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
               <option value="2025">2025</option>
             </select>
             <select
-              ref={monthRef}
               className={`${styles.input$} ${styles.expiration}`}
               name="month"
               value={month}
@@ -163,7 +146,6 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
             </label>
 
             <input
-              ref={cvcRef}
               className={`${styles.input} ${styles.cvc}`}
               name="cvc"
               maxLength={3}
